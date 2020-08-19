@@ -33,5 +33,14 @@ OracleInstructions = {
 }
 
 class OracleTranslator(Translator):
-    def __init__(self, instructionset=OracleInstructions):
+    def __init__(self, filename, instructionset=OracleInstructions):
         super().__init__(instructionset)
+        self.filename = filename
+
+
+    def __call__(self):
+        return {
+            'tablename': self.filename,
+            'entityType': 'Table',
+            'columns': super()(),
+        }
