@@ -1,6 +1,8 @@
 # oracle.py
 
 
+import datetime
+
 from translator.tbase import Translator
 
 from translator.utils import check_datetime, utf8len
@@ -96,8 +98,10 @@ class OracleTranslator(Translator):
 
 
     def translate(self, profile):
+        date = datetime.datetime.now()
+        fdate = '-'.join([str(x) for x in [date.year, date.month, date.day]])
         return {
-            'tablename': self.tablename,
+            'tablename': self.tablename.split('.')[0]+'_'+fdate,
             'entityType': 'Table',
             'columns': super().translate(profile),
         }
