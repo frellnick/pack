@@ -1,4 +1,4 @@
-# test_profile.py
+# test_archivor.py
 
 
 import unittest
@@ -13,7 +13,7 @@ from profile import Profiler
 from translator import OracleTranslator
 
 
-class TestTranslatorActions(unittest.TestCase):
+class TestArchivorActions(unittest.TestCase):
     
     def setUp(self):
         setup(log=True)
@@ -30,18 +30,20 @@ class TestTranslatorActions(unittest.TestCase):
             self.profilers.append(prf)
 
         
-    def test_make_oracletranslator(self):
-        self.logger.info('Test: Make OracleTranslator Instance')
-        tlr = OracleTranslator(tablename=None)
 
 
-    def test_oracletranslation(self):
-        self.logger.info('Test: Translate profile with OracleTranslator')
-        profile = self.profilers[0].profile 
-        tlr = OracleTranslator(tablename='TestTable1')
+    # def test_make_oracletranslator(self):
+    #     self.logger.info('Test: Make OracleTranslator Instance')
+    #     tlr = OracleTranslator(tablename=None)
 
-        translation = tlr(profile)
-        self.logger.info(f'Translation: {translation}')
+
+    # def test_oracletranslation(self):
+    #     self.logger.info('Test: Translate profile with OracleTranslator')
+    #     profile = self.profilers[0].profile 
+    #     tlr = OracleTranslator(tablename='TestTable1')
+
+    #     translation = tlr(profile)
+    #     self.logger.info(f'Translation: {translation}')
 
         self.assertEqual(len(translation['columns']), 4)
 
