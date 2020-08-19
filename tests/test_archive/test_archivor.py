@@ -11,7 +11,10 @@ from tests import config, setup
 # User Libs
 from profile import Profiler
 from translator import OracleTranslator
-from archivor import agg_translations
+from archivor import agg_translations, create_temp, copy_files, clean_temp, create_archive
+
+
+data_dir = os.path.join(os.getcwd(),'tests', 'data')
 
 
 class TestArchivorActions(unittest.TestCase):
@@ -20,10 +23,9 @@ class TestArchivorActions(unittest.TestCase):
         setup(log=True)
         self.logger = logging.getLogger(__name__)
 
-        self.data_dir = os.path.join(os.getcwd(),'tests', 'data')
-        self.filenames = os.listdir(self.data_dir)
-        assert len(os.listdir(self.data_dir)) > 0, f'Data files missing from data directory {self.data_dir}'
-        self.data_paths = [os.path.join(self.data_dir, fname) for fname in os.listdir(self.data_dir)]
+        self.filenames = os.listdir(data_dir)
+        assert len(os.listdir(data_dir)) > 0, f'Data files missing from data directory {data_dir}'
+        self.data_paths = [os.path.join(data_dir, fname) for fname in os.listdir(data_dir)]
 
         self.translations = []
 
@@ -47,16 +49,39 @@ class TestArchivorActions(unittest.TestCase):
 
         self.assertTrue(os.path.isfile(fpath))
 
-        cleanup
+        # cleanup
         os.remove(fpath)
 
 
-    # def test_create_temp_dir(self):
-    #     pass 
+    def test_create_temp_dir(self):
+        self.logger.info('Test: Create Temporary Directory')
+        temppath = create_temp(data_dir)
+        self.assertTrue(os.path.isdir(temppath))
+        self.logger.info(f'Created directory {temppath}')
 
+        # cleanup
+        clean_temp(temppath)
+        
+
+    def test_copy_files(self):
+        self.logger.info('Test: Copy Files')
+        temppath = create_temp(data_dir)
+        copy_files(data_dir, temppath)
+
+        self.assertEqual(len(os.listdir(data_dir)), len(os.listdir(temppath)))
+
+        # cleanup
+        clean_temp(temppath)
     
-    # def test_create_archive(self):
-    #     pass
+
+    def test_create_archive(self):
+        self.logger.info('Test: create_archive')
+        zippath = create_archive(translations=self.translations, dirpath=data_dir, zipname='PARTNER_TESTFILE.zip')
+        
+        self.assertTrue(os.path.isfile(zippath))
+
+        #cleanup
+        os.remove(zippath)
 
 
 if __name__ == "__main__":
