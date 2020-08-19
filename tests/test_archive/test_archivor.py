@@ -11,6 +11,7 @@ from tests import config, setup
 # User Libs
 from profile import Profiler
 from translator import OracleTranslator
+from archivor import agg_translations
 
 
 class TestArchivorActions(unittest.TestCase):
@@ -20,32 +21,42 @@ class TestArchivorActions(unittest.TestCase):
         self.logger = logging.getLogger(__name__)
 
         self.data_dir = os.path.join(os.getcwd(),'tests', 'data')
+        self.filenames = os.listdir(self.data_dir)
         assert len(os.listdir(self.data_dir)) > 0, f'Data files missing from data directory {self.data_dir}'
         self.data_paths = [os.path.join(self.data_dir, fname) for fname in os.listdir(self.data_dir)]
 
-        self.profilers = []
-        for f in self.data_paths:
+        self.translations = []
+
+        for i, f in enumerate(self.data_paths):
             prf = Profiler()
             prf.load_csv(f, low_memory=False)
-            self.profilers.append(prf)
-
-        
-
-
-    # def test_make_oracletranslator(self):
-    #     self.logger.info('Test: Make OracleTranslator Instance')
-    #     tlr = OracleTranslator(tablename=None)
+            tlr = OracleTranslator(tablename=self.filenames[i])
+            self.translations.append(tlr(prf.profile))
 
 
-    # def test_oracletranslation(self):
-    #     self.logger.info('Test: Translate profile with OracleTranslator')
-    #     profile = self.profilers[0].profile 
-    #     tlr = OracleTranslator(tablename='TestTable1')
+    def test_agg_metadata(self):
+        self.logger.info('Test: Agg Metadata')
+        metadata = agg_translations(self.translations)
+        self.logger.info(f'Metadata: \n {metadata}')
 
-    #     translation = tlr(profile)
-    #     self.logger.info(f'Translation: {translation}')
+    
+    def test_save_agg_metadata(self):
+        self.logger.info('Test: Save Agg Metadata')
+        fpath = os.path.join(os.getcwd(), 'testmeta.json')
+        agg_translations(self.translations, filepath=fpath)
 
-        self.assertEqual(len(translation['columns']), 4)
+        self.assertTrue(os.path.isfile(fpath))
+
+        cleanup
+        os.remove(fpath)
+
+
+    # def test_create_temp_dir(self):
+    #     pass 
+
+    
+    # def test_create_archive(self):
+    #     pass
 
 
 if __name__ == "__main__":
