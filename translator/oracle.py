@@ -82,12 +82,12 @@ def _translate_numeric(profile, colspec=OracleColSpec):
 
 
 
-
-
 OracleInstructions = {
     'text': _translate_text,
     'numeric': _translate_numeric,
 }
+
+
 
 class OracleTranslator(Translator):
     def __init__(self, tablename, instructionset=OracleInstructions):
