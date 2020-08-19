@@ -32,7 +32,10 @@ def _translate_text(profile, colspec=OracleColSpec):
         if check_datetime(varoptions):
             return 'datetime'
         else:
-            return 'VARCHAR2'
+            if _get_max_text_size(varoptions) < 3500:
+                return 'VARCHAR2'
+            else:
+                return 'CLOB'
 
     def _get_max_text_size(varoptions):
         smax = 0
@@ -52,7 +55,32 @@ def _translate_text(profile, colspec=OracleColSpec):
 
 
 def _translate_numeric(profile, colspec=OracleColSpec):
-    pass
+    
+    def _infer_num_types(varoptions):
+        return 'NUMBER'
+
+    def _get_max_num_size(varoptions):
+        precisions = [len(str(option).split('.')[0]) for option in varoptions]
+        return max(precisions)
+
+    def _est_mantissa(varoptions):
+        decimals = [len(str(option).split('.')) > 1 for option in varoptions]
+        if sum(decimals) >= 1:
+            mantissa = [len(str(option).split('.')[-1]) for option in varoptions]
+            return max(mantissa)
+        else:
+            return 0
+
+    spec = colspec.copy()
+    spec['columnName'] = profile['name']
+    spec['columnType'] = _infer_num_types(profile['varoptions'])
+    spec['size'] = _get_max_num_size(profile['varoptions'])
+    spec['mantissa'] = _est_mantissa(profile['varoptions'])
+
+    return spec
+
+
+
 
 
 
