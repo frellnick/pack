@@ -43,6 +43,13 @@ class TestProfilerActions(unittest.TestCase):
             prf.load_csv(f, low_memory=False)
             profilers.append(prf)
 
+        profiles = []
+        for p in profilers:
+            profile = p.profile
+            profiles.append(profile)
+
+        self.logger.info(f'Generated profiles: {profiles}')
+
 
 
 
