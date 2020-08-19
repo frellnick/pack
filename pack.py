@@ -19,6 +19,7 @@ def run_pack(data_dir, **kwargs):
     date = datetime.datetime.now()
     fdate = '-'.join([str(x) for x in [date.year, date.month, date.day]])
     log.info(f'Setup complete.  Beginning pack of {data_dir} on {date}.')
+    log.info(f'Optional arguments used: {kwargs}')
     
     filenames = os.listdir(data_dir)
     log.info(f'Found the following files: \n {filenames}.')
@@ -52,8 +53,15 @@ def run_pack(data_dir, **kwargs):
 def _build_paths(flist, root):
     return [os.path.join(root, f) for f in flist]
 
-def _clean_list(flist, phrase):
-    return [f for f in flist if phrase not in f]
+def _clean_list(flist, phrase, other=['.zip']):
+    def _clear_clist(f, clist):
+        checks = [s in f for s in clist]
+        return sum(checks) == 0
+
+    clist = [phrase]
+    clist.extend(other)
+    return [f for f in flist if _clear_clist(f, clist)]
+
 
 def _check_valid_path(path):
     fullpath = os.path.join(os.getcwd(), path)
@@ -74,10 +82,16 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Package folder of data for UDRC Import.')
 
     parser.add_argument('path', help='path to data directory')
+    parser.add_argument('--zipname', help='Specify output zip filename.')
 
     args = parser.parse_args()
 
+    kwargs={}
+    if args.zipname:
+        kwargs['zipname'] = args.zipname
+
     run_pack(
         data_dir=_check_valid_path(args.path),
+        **kwargs,
         )
 
