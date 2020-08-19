@@ -3,16 +3,16 @@
 
 class Translator():
     def __init__(self, instructionset):
-        self.instructionsset = instructionset
+        self.instructionset = instructionset
 
 
     def _process(self, column):
-        tfn = self.instructions[column['vartype']]
+        tfn = self.instructionset[column['vartype']]
         return tfn(column)
 
 
     def __call__(self, profile):
-        translation = []
+        col_translations = []
         for column in profile:
-            translation.append(self._process(column))
-        return translation
+            col_translations.append(self._process(column))
+        return col_translations
