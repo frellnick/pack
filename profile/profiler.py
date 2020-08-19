@@ -91,8 +91,3 @@ def _build_metadata_from_profiles(descriptions, data, num_items):
 
 def _compile_dict(*args, **kwargs) -> dict:
     return kwargs
-
-
-
-
-

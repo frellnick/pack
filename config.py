@@ -4,7 +4,7 @@ import logging
 
 config = {
     'save': True,
-    'logfile': os.path.join(os.getcwd(), 'test.log')
+    'logfile': os.path.join(os.getcwd(), '.log')
 }
 
 def setup(log=True, **kwargs):

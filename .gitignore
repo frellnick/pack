@@ -1,3 +1,6 @@
 # Cached Files
 *__pycache__
 *.pyc
+
+# Data Files
+data/
