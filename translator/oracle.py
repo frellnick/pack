@@ -1,7 +1,9 @@
 # oracle.py
 
 
-from translator.tbase import Translator 
+from translator.tbase import Translator
+
+from translator.utils import check_datetime, utf8len
 
 ### Oracle Spec
 # [
@@ -15,14 +17,41 @@ from translator.tbase import Translator
 #     },
 # ]
 
+OracleColSpec = {
+    'columnName': None,
+    'columnType': None,
+    'size': None,
+    'mantissa': None,
+    'hashed': False
+}
 
 
-def _translate_text(profile):
-    pass 
+def _translate_text(profile, colspec=OracleColSpec):
+
+    def _infer_text_types(varoptions):
+        if check_datetime(varoptions):
+            return 'datetime'
+        else:
+            return 'VARCHAR2'
+
+    def _get_max_text_size(varoptions):
+        smax = 0
+        for val in varoptions:
+            vlen = utf8len(val)
+            if vlen > smax:
+                smax = vlen
+        return smax
+
+    spec = colspec.copy()
+    spec['columnName'] = profile['name']
+    spec['columnType'] = _infer_text_types(profile['varoptions'])
+    spec['size'] = _get_max_text_size(profile['varoptions'])
+    spec['mantissa'] = None
+
+    return spec
 
 
-
-def _translate_numeric(profile):
+def _translate_numeric(profile, colspec=OracleColSpec):
     pass
 
 
@@ -33,14 +62,17 @@ OracleInstructions = {
 }
 
 class OracleTranslator(Translator):
-    def __init__(self, filename, instructionset=OracleInstructions):
+    def __init__(self, tablename, instructionset=OracleInstructions):
         super().__init__(instructionset)
-        self.filename = filename
+        self.tablename = tablename
 
 
-    def __call__(self):
+    def translate(self, profile):
         return {
-            'tablename': self.filename,
+            'tablename': self.tablename,
             'entityType': 'Table',
-            'columns': super()(),
+            'columns': super().translate(profile),
         }
+
+    def __call__(self, profile):
+        return self.translate(profile)

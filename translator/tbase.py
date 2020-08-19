@@ -11,7 +11,7 @@ class Translator():
         return tfn(column)
 
 
-    def __call__(self, profile):
+    def translate(self, profile):
         col_translations = []
         for column in profile:
             col_translations.append(self._process(column))

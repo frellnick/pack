@@ -3,4 +3,4 @@ INFO:tests.test_profiler.test_profile:Generated profiles: [[{'name': 'id', 'vars
 INFO:tests.test_profiler.test_profile:Test: Profiler Load
 INFO:tests.test_translator.test_translate:Test: Make OracleTranslator Instance
 INFO:tests.test_translator.test_translate:Test: Translate profile with OracleTranslator
-INFO:tests.test_translator.test_translate:Translation: [None, None, None, None]
+INFO:tests.test_translator.test_translate:Translation: {'tablename': 'TestTable1', 'entityType': 'Table', 'columns': [None, {'columnName': 'name', 'columnType': 'VARCHAR2', 'size': 6, 'mantissa': None, 'hashed': False}, {'columnName': 'date', 'columnType': 'VARCHAR2', 'size': 8, 'mantissa': None, 'hashed': False}, None]}

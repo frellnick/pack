@@ -34,18 +34,18 @@ class TestProfilerActions(unittest.TestCase):
 
     def test_make_oracletranslator(self):
         self.logger.info('Test: Make OracleTranslator Instance')
-        tlr = OracleTranslator()
+        tlr = OracleTranslator(tablename=None)
 
 
     def test_oracletranslation(self):
         self.logger.info('Test: Translate profile with OracleTranslator')
         profile = self.profilers[0].profile 
-        tlr = OracleTranslator()
+        tlr = OracleTranslator(tablename='TestTable1')
 
         translation = tlr(profile)
         self.logger.info(f'Translation: {translation}')
 
-        self.assertEqual(len(translation), 4)
+        self.assertEqual(len(translation['columns']), 4)
 
 
 if __name__ == "__main__":
