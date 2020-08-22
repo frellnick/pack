@@ -101,7 +101,7 @@ class OracleTranslator(Translator):
         date = datetime.datetime.now()
         fdate = '-'.join([str(x) for x in [date.year, date.month, date.day]])
         return {
-            'tablename': self.tablename.split('.')[0],
+            'tableName': self.tablename.split('.')[0],
             'entityType': 'Table',
             'columns': super().translate(profile),
         }
