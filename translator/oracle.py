@@ -45,7 +45,7 @@ def _translate_text(profile, colspec=OracleColSpec):
             vlen = utf8len(val)
             if vlen > smax:
                 smax = vlen
-        return smax
+        return min(smax*2, 4000)
 
     spec = colspec.copy()
     spec['columnName'] = profile['name']
