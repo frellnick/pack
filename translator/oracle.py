@@ -62,7 +62,7 @@ def _translate_numeric(profile, colspec=OracleColSpec):
         return 'NUMBER'
 
     def _get_max_num_size(varoptions):
-        precisions = [len(str(option).split('.')[0]) for option in varoptions]
+        precisions = [len(str(option)) for option in varoptions]
         return max(precisions)
 
     def _est_mantissa(varoptions):
