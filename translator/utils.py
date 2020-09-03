@@ -13,3 +13,10 @@ def utf8len(s):
             return 0
         else:
             return len(str(s).encode('utf-8'))
+
+
+def clean_column_name(n:str) -> str:
+    n = n.replace(':', '_')
+    n = n.strip()
+    n = n.replace (' ', '')
+    return n
