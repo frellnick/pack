@@ -5,7 +5,7 @@ import datetime
 
 from translator.tbase import Translator
 
-from translator.utils import check_datetime, utf8len
+from translator.utils import check_datetime, utf8len, clean_column_name
 
 ### Oracle Spec
 # [
@@ -48,7 +48,7 @@ def _translate_text(profile, colspec=OracleColSpec):
         return min(smax*2, 4000)
 
     spec = colspec.copy()
-    spec['columnName'] = profile['name']
+    spec['columnName'] = clean_column_name(profile['name'])
     spec['columnType'] = _infer_text_types(profile['varoptions'])
     spec['size'] = _get_max_text_size(profile['varoptions'])
     spec['mantissa'] = None
@@ -74,7 +74,7 @@ def _translate_numeric(profile, colspec=OracleColSpec):
             return 0
 
     spec = colspec.copy()
-    spec['columnName'] = profile['name']
+    spec['columnName'] = clean_column_name(profile['name'])
     spec['columnType'] = _infer_num_types(profile['varoptions'])
     spec['size'] = _get_max_num_size(profile['varoptions'])
     spec['mantissa'] = _est_mantissa(profile['varoptions'])
