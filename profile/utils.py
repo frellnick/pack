@@ -11,7 +11,7 @@ def clean_column_name(n:str) -> str:
     return n
 
 
-def prepare_data(data, filepath, save=False):
+def prepare_data(data, filepath, **kwargs):
     def _mod_path(filepath, suffix):
         cp = filepath.split('.')
         cp[-2] = cp[-2] + suffix
@@ -33,6 +33,8 @@ def prepare_data(data, filepath, save=False):
 
     spath = filepath
 
-    if save:
-        spath = _save_file(data, filepath)
+    save = False
+    if 'save_copy' in kwargs:
+        if kwargs['save_copy']:
+            spath = _save_file(data, filepath)
     return spath

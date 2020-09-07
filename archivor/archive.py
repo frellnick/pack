@@ -29,11 +29,10 @@ def copy_files(source, destination, filenames=None):
         return os.path.join(source, filename)
 
     if filenames is None:
-        flist = os.listdir(source)
-    else:
-        flist = filenames
+        filenames = os.listdir(source)
+    archlog.info(f'Copying selection {filenames} to temp.')
 
-    for filename in flist:
+    for filename in filenames:
         archlog.info(f'Copying {filename} from {source} to {destination}')
         shutil.copy(_fpath(source, filename), destination)
 
@@ -57,7 +56,7 @@ def build_zip(filepaths, filenames, zippath):
 
 
 def create_archive(dirpath, translations, zipname, filenames: list = None):
-
+    archlog.info(f'Filenames Given to CREATE ARCHIVE {filenames}')
     temppath = create_temp(dirpath)
     archlog.info(f'Making temporary directory: {temppath}.')
 
@@ -65,9 +64,9 @@ def create_archive(dirpath, translations, zipname, filenames: list = None):
     agg_translations(translations, filepath=metapath)
     archlog.info(f'Metadata aggregated and dumped to: {metapath}')
 
-    archlog.info('Copying files into temp directory.')
     if filenames is not None:
         filenames = filenames.append('metadata.json')
+    archlog.info(f'Copying files into temp directory: {filenames}')
     copy_files(dirpath, temppath, filenames=filenames)
 
     filepaths = [os.path.join(temppath, name) for name in os.listdir(temppath)]
@@ -79,7 +78,6 @@ def create_archive(dirpath, translations, zipname, filenames: list = None):
 
     clean_temp(temppath)
     return zippath
-
 
 
 

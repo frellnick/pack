@@ -33,15 +33,16 @@ def run_pack(data_dir, **kwargs):
     log.info('Beginning Profiling and Translation.')
     translations = []
 
-    datafiles = []
+    cleanfiles = []
 
     for i, f in enumerate(data_paths):
         prf = Profiler()
-        fname = prf.load_csv(f, low_memory=False)
-        datafiles.append(fname)
-        tlr = OracleTranslator(tablename=filenames[i])
+        fname = prf.load_csv(f, low_memory=False, save_copy=True)
+        cleanfiles.append(fname)
+        tablename = os.path.basename(os.path.normpath(fname))
+        tlr = OracleTranslator(tablename=tablename)
         translations.append(tlr(prf.profile))
-        log.info(f'Successfully profiled {filenames[i]}')
+        log.info(f'Successfully cleaned and profiled {filenames[i]}')
 
     if 'zipname' in kwargs:
         zipname = kwargs['zipname']
@@ -49,12 +50,14 @@ def run_pack(data_dir, **kwargs):
         zipname = f'PARTNERID_TESTFILE_{fdate}.zip'
 
     log.info(f'Aggregating translated metadata and attempting build of: {zipname}')
+    log.info(f'Using files: {cleanfiles}')
     zippath = create_archive(
         translations=translations, 
         dirpath=data_dir, 
         zipname=zipname,
-        filenames=datafiles,
+        filenames=cleanfiles,
         )
+
     
 
 def _build_paths(flist, root):

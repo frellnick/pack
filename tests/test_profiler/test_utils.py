@@ -25,7 +25,7 @@ class TestProfilerUtils(unittest.TestCase):
     def test_prepare_data(self):
         self.logger.info('Test Prepare Data')
         self.logger.info(f'Data Columns (PRE): {self.data.columns}')
-        prepare_data(data=self.data, filepath=self.fpath, save=True)
+        prepare_data(data=self.data, filepath=self.fpath, save_copy=True)
         self.logger.info(f'Data Columns (POST): {self.data.columns}')
 
 
