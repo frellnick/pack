@@ -58,6 +58,15 @@ def run_pack(data_dir, **kwargs):
         filenames=cleanfiles,
         )
 
+    log.info('Checking finishing steps (cleanup, save).')
+    if 'save' in kwargs:
+        log.info(f"Executing save: {kwargs['save']}")
+        if kwargs['save']:
+            log.info('Retaining clean data')
+        else:
+            for fname in cleanfiles:
+                fpath = os.path.join(os.getcwd(), data_dir, fname)
+                os.remove(fpath)
     
 
 def _build_paths(flist, root):
@@ -85,6 +94,11 @@ def _check_valid_path(path):
         raise ValueError(f'Could not find {path}')
 
 
+def _infer_bool(s):
+    if 'true' in s.lower():
+        return True 
+    return False
+
 
 if __name__ == "__main__":
     import argparse
@@ -93,7 +107,7 @@ if __name__ == "__main__":
 
     parser.add_argument('path', help='path to data directory')
     parser.add_argument('--zipname', help='Specify output zip filename.')
-    parser.add_argumenet('--save', help='Retain clean copies of data.')
+    parser.add_argument('--save', help='Retain clean copies of data.')
 
     args = parser.parse_args()
 
@@ -101,7 +115,7 @@ if __name__ == "__main__":
     if args.zipname:
         kwargs['zipname'] = args.zipname
     if args.save:
-        kwargs['save_clean'] = args.save
+        kwargs['save'] = _infer_bool(args.save)
 
     run_pack(
         data_dir=_check_valid_path(args.path),
