@@ -20,9 +20,14 @@ class TestProfilerUtils(unittest.TestCase):
     def setUp(self):
         self.fpath = os.path.join(data_dir, 'test1.csv')
         self.data = pd.read_csv(self.fpath, low_memory=False)
+        self.logger = logging.getLogger(__name__)
 
     def test_prepare_data(self):
-        prepare_data(data=self.data, filepath=self.fpath)
+        self.logger.info('Test Prepare Data')
+        self.logger.info(f'Data Columns (PRE): {self.data.columns}')
+        prepare_data(data=self.data, filepath=self.fpath, save=True)
+        self.logger.info(f'Data Columns (POST): {self.data.columns}')
+
 
 
 

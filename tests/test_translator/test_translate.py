@@ -43,7 +43,10 @@ class TestTranslatorActions(unittest.TestCase):
         translation = tlr(profile)
         self.logger.info(f'Translation: {translation}')
 
-        self.assertEqual(len(translation['columns']), 4)
+        self.assertEqual(
+            len(translation['columns']), 
+            len(self.profilers[0].data.columns)
+            )
 
 
 if __name__ == "__main__":

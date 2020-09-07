@@ -14,7 +14,8 @@ class Profiler():
     
     def load_csv(self, filepath, **kwargs):
         self.data = pd.read_csv(filepath, **kwargs)
-        return self.data.head()
+        clean_path = prepare_data(self.data, filepath)  # Changes data in place   
+        return clean_path
 
     def load_frame(self, dataframe, **kwargs):
         self.data = dataframe
