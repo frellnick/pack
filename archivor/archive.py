@@ -56,7 +56,6 @@ def build_zip(filepaths, filenames, zippath):
 
 
 def create_archive(dirpath, translations, zipname, filenames: list = None):
-    archlog.info(f'Filenames Given to CREATE ARCHIVE {filenames}')
     temppath = create_temp(dirpath)
     archlog.info(f'Making temporary directory: {temppath}.')
 
@@ -64,8 +63,6 @@ def create_archive(dirpath, translations, zipname, filenames: list = None):
     agg_translations(translations, filepath=metapath)
     archlog.info(f'Metadata aggregated and dumped to: {metapath}')
 
-    if filenames is not None:
-        filenames = filenames.append('metadata.json')
     archlog.info(f'Copying files into temp directory: {filenames}')
     copy_files(dirpath, temppath, filenames=filenames)
 

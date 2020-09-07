@@ -38,9 +38,9 @@ def run_pack(data_dir, **kwargs):
     for i, f in enumerate(data_paths):
         prf = Profiler()
         fname = prf.load_csv(f, low_memory=False, save_copy=True)
-        cleanfiles.append(fname)
-        tablename = os.path.basename(os.path.normpath(fname))
-        tlr = OracleTranslator(tablename=tablename)
+        basename = os.path.basename(os.path.normpath(fname))
+        cleanfiles.append(basename)
+        tlr = OracleTranslator(tablename=basename)
         translations.append(tlr(prf.profile))
         log.info(f'Successfully cleaned and profiled {filenames[i]}')
 
@@ -56,7 +56,6 @@ def run_pack(data_dir, **kwargs):
         dirpath=data_dir, 
         zipname=zipname,
         filenames=cleanfiles,
-        # test=cleanfiles,
         )
 
     
@@ -94,12 +93,15 @@ if __name__ == "__main__":
 
     parser.add_argument('path', help='path to data directory')
     parser.add_argument('--zipname', help='Specify output zip filename.')
+    parser.add_argumenet('--save', help='Retain clean copies of data.')
 
     args = parser.parse_args()
 
     kwargs={}
     if args.zipname:
         kwargs['zipname'] = args.zipname
+    if args.save:
+        kwargs['save_clean'] = args.save
 
     run_pack(
         data_dir=_check_valid_path(args.path),
