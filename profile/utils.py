@@ -1,5 +1,8 @@
 # utils.py (profile utilities)
 
+import logging 
+
+ulog = logging.getLogger(__name__)
 
 def clean_column_name(n:str) -> str:
     n = n.replace(':', '_')
@@ -18,10 +21,15 @@ def prepare_data(data, filepath, save=False):
         spath = _mod_path(filepath, suffix)
         data.to_csv(spath, index=False)
         return spath
-
     
+    ulog.info(f'Checking Columns: {data.columns}')
     data.columns = [clean_column_name(column) for column in data.columns]
+    ulog.info(f'Output Columns: {data.columns}')
+    
+    ulog.info(f'Checking for null records.')
+    ulog.info(f'Raw Records: {len(data)}')
     data = data.dropna(how='all')
+    ulog.info(f'Cleaned Records: {len(data)}')
 
     spath = filepath
 
