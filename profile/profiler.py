@@ -5,6 +5,8 @@ Create metadata from raw columnar information
 """
 
 import pandas as pd
+from .utils import *
+
 
 class Profiler():
     def __init__(self, **kwargs):
