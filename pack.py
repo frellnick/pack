@@ -56,6 +56,7 @@ def run_pack(data_dir, **kwargs):
         dirpath=data_dir, 
         zipname=zipname,
         filenames=cleanfiles,
+        # test=cleanfiles,
         )
 
     
