@@ -1,0 +1,8 @@
+# utils.py (profile utilities)
+
+
+def clean_column_name(n:str) -> str:
+    n = n.replace(':', '_')
+    n = n.strip()
+    n = n.replace (' ', '')
+    return n

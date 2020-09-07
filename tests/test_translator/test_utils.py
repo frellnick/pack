@@ -14,10 +14,10 @@ from translator.utils import *
 
 class TestTranslatorUtils(unittest.TestCase):
     
-    def test_name_clean(self):
-        n = 'Unnamed: 17'
-        cn = clean_column_name(n)
-        self.assertEqual(cn, 'Unnamed_17')
+    def test_utflen(self):
+        tstr = 'test'
+        tlen = utf8len(tstr)
+        self.assertEqual(tlen, 4)
 
 
 if __name__ == "__main__":
