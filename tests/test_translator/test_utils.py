@@ -19,6 +19,15 @@ class TestTranslatorUtils(unittest.TestCase):
         tlen = utf8len(tstr)
         self.assertEqual(tlen, 4)
 
+    def test_sig_git(self):
+        n1 = 0.0010
+        n2 = 2
+        n3 = 1.5
+
+        self.assertEqual(signif_dig(n1), 4)
+        self.assertEqual(signif_dig(n2), 1)
+        self.assertEqual(signif_dig(n3), 2)
+
 
 if __name__ == "__main__":
     unittest.main()
