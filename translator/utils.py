@@ -46,7 +46,7 @@ def count_mantissa(n):
 
     def _count_right(n):
         try:
-            return max(len(cp[1].strip('0')), 1)
+            return max(len(cp[1].rstrip('0')), 1)
         except:
             return 0
     

@@ -28,6 +28,14 @@ class TestTranslatorUtils(unittest.TestCase):
         self.assertEqual(signif_dig(n2), 1)
         self.assertEqual(signif_dig(n3), 2)
 
+    def test_mantissa(self):
+        n1 = 0.0010
+        n2 = 2
+        n3 = 1.5
+
+        self.assertEqual(count_mantissa(n1), 3)
+        self.assertEqual(count_mantissa(n2), 0)
+        self.assertEqual(count_mantissa(n3), 1)
 
 if __name__ == "__main__":
     unittest.main()
