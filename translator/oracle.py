@@ -5,7 +5,7 @@ import datetime
 
 from translator.tbase import Translator
 
-from translator.utils import check_datetime, utf8len, signif_dig
+from translator.utils import check_datetime, utf8len, signif_dig, count_mantissa
 
 ### Oracle Spec
 # [
@@ -68,7 +68,7 @@ def _translate_numeric(profile, colspec=OracleColSpec):
     def _est_mantissa(varoptions):
         decimals = [len(str(option).split('.')) > 1 for option in varoptions]
         if sum(decimals) >= 1:
-            mantissa = [signif_dig(option) for option in varoptions]
+            mantissa = [count_mantissa(option) for option in varoptions]
             return max(mantissa)
         else:
             return 0

@@ -21,6 +21,23 @@ def utf8len(s):
 
 
 def signif_dig(n):
+    def _count_digits(n):
+        c = str(n).replace('.', '')
+        c = c.strip()
+        return len(c)
+    
+    cp = str(n).split('.')
+
+    try:
+        assert len(cp) < 3, 'Number not formatted properly'
+        return _count_digits(n)
+    except Exception as e:
+        ulog.warning(f'Error analyzing number: {n}')
+        ulog.error(e)
+        return None
+
+
+def count_mantissa(n):
     def _count_left(n):
         try:
             return max(len(cp[0].lstrip('0')), 1)
@@ -29,16 +46,16 @@ def signif_dig(n):
 
     def _count_right(n):
         try:
-            return len(cp[1].rstrip('0'))
+            return max(len(cp[1].strip('0')), 1)
         except:
             return 0
-
+    
     cp = str(n).split('.')
+
     try:
         assert len(cp) < 3, 'Number not formatted properly'
-        l = _count_left(cp)
         r = _count_right(cp)
-        return l + r
+        return r
     except Exception as e:
         ulog.warning(f'Error analyzing number: {n}')
         ulog.error(e)
