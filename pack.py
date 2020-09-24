@@ -85,6 +85,7 @@ def _validate_filepaths(data_dir, filenames:list):
 def _build_paths(flist, root):
     return [os.path.join(root, f) for f in flist]
 
+
 def _clean_list(flist, phrase, other=['.zip']):
     def _clear_clist(f, clist):
         checks = [s in f for s in clist]

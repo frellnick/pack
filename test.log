@@ -2,17 +2,21 @@ INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number', 'Unn
 INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number', 'Unnamed_4'], dtype='object')
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
+INFO:numexpr.utils:NumExpr defaulting to 8 threads.
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number', 'Unnamed_4'], dtype='object')
 INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number', 'Unnamed_4'], dtype='object')
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number'], dtype='object')
 INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number'], dtype='object')
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:tests.test_archive.test_archivor:Test: Agg Metadata
 INFO:tests.test_archive.test_archivor:Metadata: 
  [{"tableName": "test1", "entityType": "Table", "columns": [{"columnName": "id", "columnType": "NUMBER", "size": 1, "mantissa": 0, "hashed": false}, {"columnName": "name", "columnType": "VARCHAR2", "size": 12, "mantissa": null, "hashed": false}, {"columnName": "date", "columnType": "VARCHAR2", "size": 16, "mantissa": null, "hashed": false}, {"columnName": "number", "columnType": "NUMBER", "size": 5, "mantissa": 2, "hashed": false}, {"columnName": "Unnamed_4", "columnType": "VARCHAR2", "size": 18, "mantissa": null, "hashed": false}]}, {"tableName": "test1_clean", "entityType": "Table", "columns": [{"columnName": "id", "columnType": "NUMBER", "size": 1, "mantissa": 0, "hashed": false}, {"columnName": "name", "columnType": "VARCHAR2", "size": 12, "mantissa": null, "hashed": false}, {"columnName": "date", "columnType": "VARCHAR2", "size": 16, "mantissa": null, "hashed": false}, {"columnName": "number", "columnType": "NUMBER", "size": 5, "mantissa": 2, "hashed": false}, {"columnName": "Unnamed_4", "columnType": "VARCHAR2", "size": 18, "mantissa": null, "hashed": false}]}, {"tableName": "test2", "entityType": "Table", "columns": [{"columnName": "id", "columnType": "NUMBER", "size": 1, "mantissa": 0, "hashed": false}, {"columnName": "name", "columnType": "VARCHAR2", "size": 12, "mantissa": null, "hashed": false}, {"columnName": "date", "columnType": "VARCHAR2", "size": 16, "mantissa": null, "hashed": false}, {"columnName": "number", "columnType": "NUMBER", "size": 4, "mantissa": 1, "hashed": false}]}]
@@ -21,16 +25,19 @@ INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number', 'Unnam
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number', 'Unnamed_4'], dtype='object')
 INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number', 'Unnamed_4'], dtype='object')
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number'], dtype='object')
 INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number'], dtype='object')
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:tests.test_archive.test_archivor:Test: Copy Files
 INFO:archivor.archive:Copying selection ['test1.csv', 'test1_clean.csv', 'test2.csv'] to temp.
 INFO:archivor.archive:Copying test1.csv from C:\Users\vbrandon\Desktop\H_sync\DTS Sends\pack\tests\data to C:\Users\vbrandon\Desktop\H_sync\DTS Sends\pack\tests\data_temp
@@ -41,16 +48,19 @@ INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number', 'Unnam
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number', 'Unnamed_4'], dtype='object')
 INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number', 'Unnamed_4'], dtype='object')
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number'], dtype='object')
 INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number'], dtype='object')
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:tests.test_archive.test_archivor:Test: create_archive
 INFO:archivor.archive:Making temporary directory: C:\Users\vbrandon\Desktop\H_sync\DTS Sends\pack\tests\data_temp.
 INFO:archivor.archive:Metadata aggregated and dumped to: C:\Users\vbrandon\Desktop\H_sync\DTS Sends\pack\tests\data_temp\metadata.json
@@ -71,16 +81,19 @@ INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number', 'Unnam
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number', 'Unnamed_4'], dtype='object')
 INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number', 'Unnamed_4'], dtype='object')
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number'], dtype='object')
 INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number'], dtype='object')
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:tests.test_archive.test_archivor:Test: Create Temporary Directory
 INFO:tests.test_archive.test_archivor:Created directory C:\Users\vbrandon\Desktop\H_sync\DTS Sends\pack\tests\data_temp
 INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number', 'Unnamed: 4'], dtype='object')
@@ -88,16 +101,19 @@ INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number', 'Unnam
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number', 'Unnamed_4'], dtype='object')
 INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number', 'Unnamed_4'], dtype='object')
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number'], dtype='object')
 INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number'], dtype='object')
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:tests.test_archive.test_archivor:Test: Save Agg Metadata
 INFO:tests.test_profiler.test_profile:Test: Profiler Gen
 INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number', 'Unnamed: 4'], dtype='object')
@@ -105,16 +121,19 @@ INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number', 'Unnam
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number', 'Unnamed_4'], dtype='object')
 INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number', 'Unnamed_4'], dtype='object')
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number'], dtype='object')
 INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number'], dtype='object')
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:tests.test_profiler.test_profile:Generated profiles: [[{'name': 'id', 'varsize': 1, 'num_items': 3, 'vartype': 'numeric', 'varoptions': (0, 2)}, {'name': 'name', 'varsize': 1, 'num_items': 3, 'vartype': 'text', 'varoptions': array(['ray', 'renee', 'railey'], dtype=object)}, {'name': 'date', 'varsize': 1, 'num_items': 3, 'vartype': 'text', 'varoptions': array(['2/2/1999', '1/1/2000', '3/3/2001'], dtype=object)}, {'name': 'number', 'varsize': 1, 'num_items': 3, 'vartype': 'numeric', 'varoptions': (22.5, 44.44)}, {'name': 'Unnamed_4', 'varsize': 1, 'num_items': 3, 'vartype': 'text', 'varoptions': array(['empty_col'], dtype=object)}], [{'name': 'id', 'varsize': 1, 'num_items': 3, 'vartype': 'numeric', 'varoptions': (0, 2)}, {'name': 'name', 'varsize': 1, 'num_items': 3, 'vartype': 'text', 'varoptions': array(['ray', 'renee', 'railey'], dtype=object)}, {'name': 'date', 'varsize': 1, 'num_items': 3, 'vartype': 'text', 'varoptions': array(['2/2/1999', '1/1/2000', '3/3/2001'], dtype=object)}, {'name': 'number', 'varsize': 1, 'num_items': 3, 'vartype': 'numeric', 'varoptions': (22.5, 44.44)}, {'name': 'Unnamed_4', 'varsize': 1, 'num_items': 3, 'vartype': 'text', 'varoptions': array(['empty_col'], dtype=object)}], [{'name': 'id', 'varsize': 1, 'num_items': 3, 'vartype': 'numeric', 'varoptions': (0, 2)}, {'name': 'name', 'varsize': 1, 'num_items': 3, 'vartype': 'text', 'varoptions': array(['ray', 'renee', 'railey'], dtype=object)}, {'name': 'date', 'varsize': 1, 'num_items': 3, 'vartype': 'text', 'varoptions': array(['2/2/1999', '1/1/2000', '3/3/2001'], dtype=object)}, {'name': 'number', 'varsize': 1, 'num_items': 3, 'vartype': 'numeric', 'varoptions': (22.5, 44.4)}]]
 INFO:tests.test_profiler.test_profile:Test: Profiler Load
 INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number', 'Unnamed: 4'], dtype='object')
@@ -122,16 +141,19 @@ INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number', 'Unnam
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number', 'Unnamed_4'], dtype='object')
 INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number', 'Unnamed_4'], dtype='object')
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number'], dtype='object')
 INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number'], dtype='object')
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:tests.test_profiler.test_utils:Test Prepare Data
 INFO:tests.test_profiler.test_utils:Data Columns (PRE): Index(['id', 'name', 'date', 'number', 'Unnamed: 4'], dtype='object')
 INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number', 'Unnamed: 4'], dtype='object')
@@ -139,37 +161,44 @@ INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number', 'Unnam
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:tests.test_profiler.test_utils:Data Columns (POST): Index(['id', 'name', 'date', 'number', 'Unnamed_4'], dtype='object')
 INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number', 'Unnamed: 4'], dtype='object')
 INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number', 'Unnamed_4'], dtype='object')
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number', 'Unnamed_4'], dtype='object')
 INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number', 'Unnamed_4'], dtype='object')
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number'], dtype='object')
 INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number'], dtype='object')
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:tests.test_translator.test_translate:Test: Make OracleTranslator Instance
 INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number', 'Unnamed: 4'], dtype='object')
 INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number', 'Unnamed_4'], dtype='object')
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number', 'Unnamed_4'], dtype='object')
 INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number', 'Unnamed_4'], dtype='object')
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:profile.utils:Checking Columns: Index(['id', 'name', 'date', 'number'], dtype='object')
 INFO:profile.utils:Output Columns: Index(['id', 'name', 'date', 'number'], dtype='object')
 INFO:profile.utils:Checking for null records.
 INFO:profile.utils:Raw Records: 3
 INFO:profile.utils:Cleaned Records: 3
+INFO:profile.utils:Checking DTypes for Downcasting
 INFO:tests.test_translator.test_translate:Test: Translate profile with OracleTranslator
 INFO:tests.test_translator.test_translate:Translation: {'tableName': 'TestTable1', 'entityType': 'Table', 'columns': [{'columnName': 'id', 'columnType': 'NUMBER', 'size': 1, 'mantissa': 0, 'hashed': False}, {'columnName': 'name', 'columnType': 'VARCHAR2', 'size': 12, 'mantissa': None, 'hashed': False}, {'columnName': 'date', 'columnType': 'VARCHAR2', 'size': 16, 'mantissa': None, 'hashed': False}, {'columnName': 'number', 'columnType': 'NUMBER', 'size': 5, 'mantissa': 2, 'hashed': False}, {'columnName': 'Unnamed_4', 'columnType': 'VARCHAR2', 'size': 18, 'mantissa': None, 'hashed': False}]}

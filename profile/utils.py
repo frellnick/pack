@@ -1,5 +1,9 @@
 # utils.py (profile utilities)
 
+
+import numpy as np
+import pandas as pd
+
 import logging 
 
 ulog = logging.getLogger(__name__)
@@ -21,6 +25,17 @@ def prepare_data(data, filepath, **kwargs):
         spath = _mod_path(filepath, suffix)
         data.to_csv(spath, index=False)
         return spath
+
+    def _downcast(data:pd.DataFrame):
+        for col in data.columns:
+            if np.issubdtype(data[col], np.number):
+                try:
+                    data[col] = pd.to_numeric(data[0], downcast='integer')
+                except:
+                    pass
+            else:
+                pass
+        return data
     
     ulog.info(f'Checking Columns: {data.columns}')
     data.columns = [clean_column_name(column) for column in data.columns]
@@ -30,6 +45,10 @@ def prepare_data(data, filepath, **kwargs):
     ulog.info(f'Raw Records: {len(data)}')
     data = data.dropna(how='all')
     ulog.info(f'Cleaned Records: {len(data)}')
+
+
+    ulog.info(f'Checking DTypes for Downcasting')
+    data = _downcast(data)
 
     spath = filepath
 
