@@ -5,6 +5,7 @@ Create metadata from raw columnar information
 """
 
 import pandas as pd
+import numpy as np
 from .utils import *
 
 
@@ -51,7 +52,7 @@ def _get_descriptions(dataframe: pd.DataFrame) -> list:
 
 
 def _get_type(profile: pd.Series) -> str:
-    if profile._is_numeric_mixed_type:
+    if np.issubdtype(profile.dtype, np.number):
         return 'numeric'
     else:
         return 'text'

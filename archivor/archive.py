@@ -5,7 +5,7 @@ import os
 import zipfile
 from zipfile import ZipFile
 
-from archivor.build_metadata import agg_translations
+from .build_metadata import agg_translations
 
 import logging 
 

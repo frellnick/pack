@@ -3,9 +3,9 @@
 
 import datetime
 
-from translator.tbase import Translator
+from .tbase import Translator
 
-from translator.utils import check_datetime, utf8len, signif_dig, count_mantissa
+from .utils import check_datetime, utf8len, signif_dig, count_mantissa
 
 ### Oracle Spec
 # [
