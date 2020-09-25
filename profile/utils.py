@@ -27,15 +27,16 @@ def prepare_data(data, filepath, **kwargs):
         return spath
 
     def _downcast(data:pd.DataFrame):
-        for col in data.columns:
-            if np.issubdtype(data[col], np.number):
+        temp = data.copy(deep=True)
+        for col in temp.columns:
+            if np.issubdtype(temp[col], np.number):
                 try:
-                    data[col] = pd.to_numeric(data[0], downcast='integer')
+                    temp[col] = pd.to_numeric(temp[col], downcast='integer')
                 except:
                     pass
             else:
                 pass
-        return data
+        return temp
     
     ulog.info(f'Checking Columns: {data.columns}')
     data.columns = [clean_column_name(column) for column in data.columns]
@@ -47,8 +48,12 @@ def prepare_data(data, filepath, **kwargs):
     ulog.info(f'Cleaned Records: {len(data)}')
 
 
-    ulog.info(f'Checking DTypes for Downcasting')
+    ulog.info(f"Checking DTypes for Downcasting. \
+        {[f'{col}:{data[col].dtype}' for col in data.columns]}")
     data = _downcast(data)
+    ulog.info(f"Final DTypes. \
+        {[f'{col}:{data[col].dtype}' for col in data.columns]}")
+
 
     spath = filepath
 
