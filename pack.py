@@ -121,7 +121,8 @@ if __name__ == "__main__":
 
     parser.add_argument('path', help='path to data directory')
     parser.add_argument('--zipname', help='Specify output zip filename.')
-    parser.add_argument('--save', help='Retain clean copies of data.')
+    parser.add_argument('--tests', help='True/False: Create SQL tests for import & linkage.')
+    parser.add_argument('--save', help='True/False: Retain clean copies of data.')
 
     args = parser.parse_args()
 
