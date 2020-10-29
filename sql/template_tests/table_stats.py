@@ -1,9 +1,9 @@
 from .templates import TemplateTest
-from sql.components import Query
+from pack.sql.components import Query
 
 class TableStats(TemplateTest):
 
-    def __init__(self, tablename, data=None):
+    def __init__(self, tablename=None, data=None):
         self.tablename = tablename
         self.data = self._validate_data(data)
 
@@ -29,25 +29,35 @@ class TableStats(TemplateTest):
     def assemble(self):
 
         assert self.data is not None, 'Must provide data to generate statement.'
-        queries = [Query(name=table) for table in self.data['tablenames']]
-        q1 = Query(name='total_count')
-        q2 = Query(name='distinct_mpi')
-        q3 = Query(name='distinct_id')
-        loss = Query(name='loss')
-        dropped=Query(name='dropped')
-        errors = Query(name='errors')
-        q4 = Query()
+        queries = []
 
-        base = [q1, q2, q3]
-        report = [loss, dropped]
-        use_report = False
+        if self.data is not None:
+            tablenames = self.data['tablenames']
+        else:
+            tablenames = [self.tablename]
 
+        t_suffix = '_STATS'
+        for name in tablenames:
+            q = Query(name+t_suffix)
+            q.Select(f'COUNT(*) AS {name}').From(name)
+            queries.append(q)
+
+        qf = Query()
+        
+        base = queries
+        report = []
+        use_report = True
         ctes = self._organize(base, report, use_report)
-        q4.Select('*').From(*ctes)
+
+        consolidation = Query(name='consolidation')
+        consolidation.Select('*').From(*ctes)
+
+        qnames = ',\n'.join([f'"{name}"' for name in tablenames])
+        qf.Select('*').From(f'{consolidation.name} unpivot(\nrowcount for tablename in (\n{qnames})\n)')
 
         return self._stack(
             '', 'WITH',
-            self._stack(',', *ctes),
-            q4,
+            self._stack(',', *ctes, consolidation),
+            qf,
             ';'
             )

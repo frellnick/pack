@@ -1,5 +1,5 @@
 from .templates import TemplateTest
-from sql.components import Query
+from pack.sql.components import Query
 
 class SingleTableTest(TemplateTest):
 
