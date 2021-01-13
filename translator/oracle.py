@@ -98,8 +98,6 @@ class OracleTranslator(Translator):
 
 
     def translate(self, profile):
-        date = datetime.datetime.now()
-        fdate = '-'.join([str(x) for x in [date.year, date.month, date.day]])
         return {
             'tableName': self.tablename.split('.')[0],
             'entityType': 'Table',
