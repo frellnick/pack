@@ -1,13 +1,13 @@
 # pack.py
 
-from .profile import Profiler
-from .translator import OracleTranslator
-from .archivor import create_archive
+from profile import Profiler
+from translator import OracleTranslator
+from archivor import create_archive
 
 import os
 import datetime
 
-from .config import setup
+from config import setup
 import logging
 
 log = logging.getLogger(__name__)
